@@ -4,18 +4,18 @@ const app = express();
 const allRouters = require("./Routers/FirstRouter");
 const adminRouter = require("./Admin/Admin");
 const DataConn = require("./DB/MongooseConn");
-// const cors = require("cors");
+const cors = require("cors");
 
 // varaible
 const port = process.env.PORT || 5000;
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-//   methods: "PUT,GET,POST,DELETE,PATCH,HEAD",
-//   Credentials: true,
-// };
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: "PUT,GET,POST,DELETE,PATCH,HEAD",
+  Credentials: true,
+};
 
-// //middlewares
-// app.use(cors(corsOptions));
+//middlewares
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(allRouters);
 app.use(adminRouter);
